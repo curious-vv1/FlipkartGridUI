@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const ProductInfo = ({ productData, videoEnded }) => {
+const ProductInfo = ({ productData, videoEnded, reset }) => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const allData = Object.entries(productData.product_info)
@@ -17,7 +17,7 @@ const ProductInfo = ({ productData, videoEnded }) => {
         }
         return prevProgress + 3.75; // 100% / 8 seconds / 10 updates per second
       });
-    }, 1000); // Update every 100ms for smoother animation
+    }, 1000); // Update every 1000ms for smoother animation
 
     return interval;
   };
@@ -25,7 +25,7 @@ const ProductInfo = ({ productData, videoEnded }) => {
   useEffect(() => {
     const interval = startLoading();
     return () => clearInterval(interval);
-  }, []);
+  }, [reset]);
 
   useEffect(() => {
     if (videoEnded) {

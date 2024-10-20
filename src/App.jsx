@@ -9,6 +9,7 @@ const App = () => {
   const [showProductInfo, setShowProductInfo] = useState(false)
   const [isVideoEnded, setIsVideoEnded] = useState(false)
   const [productData, setProductData] = useState(null)
+  const [resetProductInfo, setResetProductInfo] = useState(false)
 
   useEffect(() => {
     getLastObject()
@@ -54,6 +55,13 @@ const App = () => {
   const handleVideoEnd = (ended) => {
     setIsVideoEnded(ended)
     setShowProductInfo(ended)
+    setResetProductInfo(false)
+  }
+
+  const handleMotorStart = () => {
+    setResetProductInfo(true)
+    setShowProductInfo(false)
+    setIsVideoEnded(false)
   }
 
   return (
@@ -64,10 +72,15 @@ const App = () => {
           <Home 
             onCameraStateChange={handleCameraStateChange} 
             onVideoEnd={handleVideoEnd}
+            onMotorStart={handleMotorStart}
           />
           <div className="space-y-4">
             {showProductInfo && isVideoEnded && productData && (
-              <ProductInfo productData={productData} videoEnded={isVideoEnded} />
+              <ProductInfo 
+                productData={productData} 
+                videoEnded={isVideoEnded} 
+                reset={resetProductInfo}
+              />
             )}
           </div>
         </div>
