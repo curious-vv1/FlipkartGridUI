@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import videoSrc from '../assets/sample.mp4'
+import videoSrc from '../assets/013.mp4'
 
 const Home = ({ onCameraStateChange, onVideoEnd, onMotorStart }) => {
   const [isCameraOn, setIsCameraOn] = useState(false)

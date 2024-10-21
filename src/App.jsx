@@ -30,6 +30,7 @@ const App = () => {
 
       const lastProductQuery = query(productDataRef, limitToLast(1))
       console.log("Query created")
+      console.log(lastProductQuery)
 
       const snapshot = await get(lastProductQuery)
       console.log("Query executed. Snapshot exists:", snapshot.exists())
