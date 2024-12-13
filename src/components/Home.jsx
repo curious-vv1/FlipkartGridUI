@@ -93,7 +93,7 @@ const Home = ({ onCameraStateChange, onVideoEnd, onMotorStart }) => {
           onClick={handleCameraToggle}
           disabled={isLoading}
         >
-          {isLoading ? 'Loading...' : isCameraOn ? 'Turn Camera Off' : 'Turn Camera On'}
+          {isLoading ? 'Loading...' : isCameraOn ? 'Cancel' : 'Upload Video'}
         </button>
         {isCameraOn && (
           <button
@@ -105,7 +105,7 @@ const Home = ({ onCameraStateChange, onVideoEnd, onMotorStart }) => {
             onClick={handleMotorControl}
             disabled={isMotorRunning}
           >
-            {isMotorRunning ? 'Running' : 'Start Motor'}
+            {isMotorRunning ? 'Detecting' : 'Start Detection'}
           </button>
         )}
       </div>
